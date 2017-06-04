@@ -51599,9 +51599,14 @@ var office_ui_fabric_react_1 = __webpack_require__(152);
  */
 var EditPanel = (function (_super) {
     __extends(EditPanel, _super);
-    // Constructor
-    function EditPanel() {
-        var _this = _super.call(this) || this;
+    /**
+     * Constructor
+     */
+    function EditPanel(props) {
+        var _this = _super.call(this, props) || this;
+        /**
+         * Methods
+         */
         // Method to save the configuration
         _this.saveConfiguration = function () {
             // Get the target webpart
@@ -51612,7 +51617,7 @@ var EditPanel = (function (_super) {
                     var content = document.createElement("div");
                     content.innerHTML = wpInfo.Properties.get_item("Content");
                     // Get the list name
-                    var listName = document.querySelector("#tbListName").value;
+                    var listName = _this.refs["listName"].value;
                     // Get the configuration
                     var cfg = content.querySelector("#dev_myContactsCfg");
                     cfg.innerText = JSON.stringify({
@@ -51649,12 +51654,15 @@ var EditPanel = (function (_super) {
         };
         return _this;
     }
+    /**
+     * Public Interface
+     */
     // Method to render the component
     EditPanel.prototype.render = function () {
         return (React.createElement("div", null,
             React.createElement(office_ui_fabric_react_1.PrimaryButton, { text: "Edit Configuration", onClick: this.updatePanel }),
             React.createElement(office_ui_fabric_react_1.Panel, { headerText: "WebPart Configuration", isLightDismiss: true, isOpen: this.state.visible, onDismiss: this.updatePanel },
-                React.createElement(office_ui_fabric_react_1.TextField, { id: "tbListName", label: "List Name", value: this.props.listName }),
+                React.createElement(office_ui_fabric_react_1.TextField, { label: "List Name", value: this.props.listName, ref: "listName" }),
                 React.createElement(office_ui_fabric_react_1.PrimaryButton, { text: "Save", onClick: this.saveConfiguration }))));
     };
     return EditPanel;

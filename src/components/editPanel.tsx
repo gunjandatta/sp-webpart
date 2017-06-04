@@ -24,15 +24,21 @@ interface State {
  * Edit Panel
  */
 export class EditPanel extends React.Component<Props, State> {
-    // Constructor
-    constructor() {
-        super();
+    /**
+     * Constructor
+     */
+    constructor(props:Props) {
+        super(props);
 
         // Set the state
         this.state = {
             visible: false
         };
     }
+
+    /**
+     * Public Interface
+     */
 
     // Method to render the component
     render() {
@@ -44,12 +50,16 @@ export class EditPanel extends React.Component<Props, State> {
                     isLightDismiss={true}
                     isOpen={this.state.visible}
                     onDismiss={this.updatePanel}>
-                    <TextField id="tbListName" label="List Name" value={this.props.listName} />
+                    <TextField label="List Name" value={this.props.listName} ref="listName" />
                     <PrimaryButton text="Save" onClick={this.saveConfiguration} />
                 </Panel>
             </div>
         );
     }
+
+    /**
+     * Methods
+     */
 
     // Method to save the configuration
     private saveConfiguration = () => {
@@ -62,7 +72,7 @@ export class EditPanel extends React.Component<Props, State> {
                 content.innerHTML = wpInfo.Properties.get_item("Content");
 
                 // Get the list name
-                let listName = (document.querySelector("#tbListName") as HTMLInputElement).value;                
+                let listName = (this.refs["listName"] as TextField).value;
 
                 // Get the configuration
                 let cfg:HTMLDivElement = content.querySelector("#dev_myContactsCfg") as HTMLDivElement;
