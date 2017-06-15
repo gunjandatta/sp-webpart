@@ -51629,6 +51629,10 @@ var EditPanel = (function (_super) {
                     wpInfo.Context.load(wpInfo.WebPartDefinition);
                     // Execute the request
                     wpInfo.Context.executeQueryAsync(function () {
+                        // Disable the edit notification
+                        if (SP && SP.Ribbon && SP.Ribbon.PageState && SP.Ribbon.PageState.PageStateHandler) {
+                            SP.Ribbon.PageState.PageStateHandler.ignoreNextUnload = true;
+                        }
                         // Refresh the page
                         document.location.href = document.location.href;
                     });
