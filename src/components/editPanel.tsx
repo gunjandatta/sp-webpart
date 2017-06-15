@@ -88,7 +88,11 @@ export class EditPanel extends React.Component<Props, State> {
 
                 // Execute the request
                 wpInfo.Context.executeQueryAsync(() => {
+<<<<<<< HEAD
                     // Disable the save notification
+=======
+                    // Disable the edit notification
+>>>>>>> 069fa3ff936ea771fdbdbfe833c398bf36121efe
                     if(SP && SP.Ribbon && SP.Ribbon.PageState && SP.Ribbon.PageState.PageStateHandler) {
                         SP.Ribbon.PageState.PageStateHandler.ignoreNextUnload = true;
                     }

@@ -51629,7 +51629,11 @@ var EditPanel = (function (_super) {
                     wpInfo.Context.load(wpInfo.WebPartDefinition);
                     // Execute the request
                     wpInfo.Context.executeQueryAsync(function () {
+<<<<<<< HEAD
                         // Disable the save notification
+=======
+                        // Disable the edit notification
+>>>>>>> 069fa3ff936ea771fdbdbfe833c398bf36121efe
                         if (SP && SP.Ribbon && SP.Ribbon.PageState && SP.Ribbon.PageState.PageStateHandler) {
                             SP.Ribbon.PageState.PageStateHandler.ignoreNextUnload = true;
                         }
