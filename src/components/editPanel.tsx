@@ -5,6 +5,7 @@ import {
     PrimaryButton,
     TextField
 } from "office-ui-fabric-react";
+declare var SP;
 
 /**
  * Properties
@@ -87,6 +88,11 @@ export class EditPanel extends React.Component<Props, State> {
 
                 // Execute the request
                 wpInfo.Context.executeQueryAsync(() => {
+                    // Disable the save notification
+                    if(SP && SP.Ribbon && SP.Ribbon.PageState && SP.Ribbon.PageState.PageStateHandler) {
+                        SP.Ribbon.PageState.PageStateHandler.ignoreNextUnload = true;
+                    }
+
                     // Refresh the page
                     document.location.href = document.location.href;
                 });
