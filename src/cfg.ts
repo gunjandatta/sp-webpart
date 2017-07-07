@@ -1,4 +1,4 @@
-import {Helper, List, SPTypes, Types} from "gd-sprest";
+import { Helper, List, SPTypes } from "gd-sprest";
 
 /**
  * Data Source
@@ -57,9 +57,10 @@ export const Configuration = new Helper.SPConfig({
                 <property name="Description" type="string">Demo displaying my contacts.</property>
                 <property name="ChromeType" type="chrometype">None</property>
                 <property name="Content" type="string">
-                    &lt;div id="dev_myContacts"&gt;&lt;/div&gt;
-                    &lt;div id="dev_myContactsCfg" style="display: none;"&gt;&lt;/div&gt;
                     &lt;script type="text/javascript" src="/sites/dev/siteassets/dev/demo_webpart.js"&gt;&lt;/script&gt;
+                    &lt;div id="wp-contacts"&gt;&lt;/div&gt;
+                    &lt;div id="wp-contactsCfg" style="display: none;"&gt;&lt;/div&gt;
+                    &lt;script type="text/javascript"&gt;SP.SOD.executeOrDelayUntilScriptLoaded(function() { new WebPartDemo(); }, 'wpDemo.js');&lt;/script&gt;
                 </property>
             </properties>
         </data>
@@ -89,10 +90,10 @@ Configuration.addTestData = () => {
     ];
 
     // Loop 10 item
-    for(let i=0; i<10; i++) {
+    for (let i = 0; i < 10; i++) {
         // Set the category
         let category = "";
-        switch(i%3) {
+        switch (i % 3) {
             case 0:
                 category = "Business";
                 break;
@@ -111,11 +112,11 @@ Configuration.addTestData = () => {
             MCPhoneNumber: "nnn-nnn-nnnn".replace(/n/g, i.toString()),
             Title: names[i]
         })
-        // Execute the request, but wait for the previous request to complete
-        .execute((item:Types.IListItem) => {
-            // Log
-            console.log("[WP Demo] Test item '" + item["Title"] + "' was created successfully.");
-        }, true);
+            // Execute the request, but wait for the previous request to complete
+            .execute((item) => {
+                // Log
+                console.log("[WP Demo] Test item '" + item["Title"] + "' was created successfully.");
+            }, true);
     }
 
     // Wait for the requests to complete

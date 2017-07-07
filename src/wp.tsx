@@ -1,32 +1,40 @@
 import * as React from "react";
-import {DataSource, IMyContact} from "../data/ds";
-import {
-    DetailsList,
-    Pivot, PivotItem
-} from "office-ui-fabric-react";
-import "../sass/grid.scss";
+import { List } from "gd-sprest";
+import { DetailsList, Pivot, PivotItem } from "office-ui-fabric-react";
+import { IDemoWebPartCfg } from "./wpCfg";
+import "./wpDemo.scss";
+
+/**
+ * Contact
+ */
+interface IContact {
+    MCCategory: string;
+    MCPhoneNumber: string;
+    ID: number;
+    Title: string;
+}
 
 /**
  * Properties
  */
 interface Props {
-    listName: string;
+    cfg: IDemoWebPartCfg;
 }
 
 /**
  * State
  */
 interface State {
-    contacts: Array<IMyContact>;
+    contacts: Array<IContact>;
     selectedTab: string;
 }
 
 /**
- * Contact Tabs
+ * Contacts WebPart
  */
-export class ContactTabs extends React.Component<Props, State> {
+export class ContactsWebPart extends React.Component<Props, State> {
     // Constructor
-    constructor(props:Props) {
+    constructor(props: Props) {
         super(props);
 
         // Set the state
@@ -35,13 +43,8 @@ export class ContactTabs extends React.Component<Props, State> {
             selectedTab: "Business"
         };
 
-        // Load the data
-        DataSource.loadData(props.listName).then((contacts:Array<IMyContact>) => {
-            // Update the state
-            this.setState({
-                contacts: contacts
-            })
-        });
+        // Load the list data
+        this.load();
     }
 
     // Render the component
@@ -61,16 +64,41 @@ export class ContactTabs extends React.Component<Props, State> {
         );
     }
 
+    /**
+     * Methods
+     */
+
+    // Method to load the list data
+    private load = () => {
+        // Get the list
+        (new List(this.props.cfg.ListName))
+            // Get the items
+            .Items()
+            // Set the query
+            .query({
+                OrderBy: ["MCCategory", "Title"],
+                Select: ["MCCategory", "MCPhoneNumber", "Title"],
+                Top: 500
+            })
+            // Execute the request
+            .execute((items) => {
+                // Update the state
+                this.setState({
+                    contacts: items.results || [] as any
+                });
+            });
+    }
+
     // Method to render the contacts
     private renderContacts = () => {
         let contacts = [];
 
         // Parse the contacts
-        for(let i=0; i<this.state.contacts.length; i++) {
+        for (let i = 0; i < this.state.contacts.length; i++) {
             let contact = this.state.contacts[i];
 
             // See if this is a contact we are rendering
-            if(contact.MCCategory == this.state.selectedTab) {
+            if (contact.MCCategory == this.state.selectedTab) {
                 // Add the contact
                 contacts.push({
                     "Full Name": contact.Title,
@@ -82,14 +110,14 @@ export class ContactTabs extends React.Component<Props, State> {
         // Return the contacts
         return (
             contacts.length == 0 ?
-            <h3>No '{this.state.selectedTab}' contacts exist</h3>
-            :
-            <DetailsList className="contacts-list" items={contacts} />
+                <h3>No '{this.state.selectedTab}' contacts exist</h3>
+                :
+                <DetailsList className="contacts-list" items={contacts} />
         );
     }
 
     // Method to update the contacts
-    private updateContacts = (link:PivotItem, ev:React.MouseEvent<HTMLElement>) => {
+    private updateContacts = (link: PivotItem, ev: React.MouseEvent<HTMLElement>) => {
         // Prevent postback
         ev.preventDefault();
 

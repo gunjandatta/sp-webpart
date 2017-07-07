@@ -6,7 +6,7 @@ module.exports = {
 
     // File(s) to target
     entry: {
-        demo_webpart: "./index.tsx",
+        wpDemo: "./index.tsx",
     },
 
     // Output
