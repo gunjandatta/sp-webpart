@@ -23117,8 +23117,8 @@ exports.Configuration = new gd_sprest_1.Helper.SPConfig({
     WebPartCfg: [
         {
             FileName: "dev_wpDemo.webpart",
-            Group: "Dev",
-            XML: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<webParts>\n    <webPart xmlns=\"http://schemas.microsoft.com/WebPart/v3\">\n        <metaData>\n            <type name=\"Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c\" />\n            <importErrorMessage>$Resources:core,ImportantErrorMessage;</importErrorMessage>\n        </metaData>\n        <data>\n            <properties>\n                <property name=\"Title\" type=\"string\">My Contacts</property>\n                <property name=\"Description\" type=\"string\">Demo displaying my contacts.</property>\n                <property name=\"ChromeType\" type=\"chrometype\">None</property>\n                <property name=\"Content\" type=\"string\">\n                    &lt;script type=\"text/javascript\" src=\"/sites/dev/siteassets/dev/demo_webpart.js\"&gt;&lt;/script&gt;\n                    &lt;div id=\"wp-contacts\"&gt;&lt;/div&gt;\n                    &lt;div id=\"wp-contactsCfg\" style=\"display: none;\"&gt;&lt;/div&gt;\n                    &lt;script type=\"text/javascript\"&gt;SP.SOD.executeOrDelayUntilScriptLoaded(function() { new WebPartDemo(); }, 'wpDemo.js');&lt;/script&gt;\n                </property>\n            </properties>\n        </data>\n    </webPart>\n</webParts>"
+            Group: "Demo",
+            XML: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<webParts>\n    <webPart xmlns=\"http://schemas.microsoft.com/WebPart/v3\">\n        <metaData>\n            <type name=\"Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c\" />\n            <importErrorMessage>$Resources:core,ImportantErrorMessage;</importErrorMessage>\n        </metaData>\n        <data>\n            <properties>\n                <property name=\"Title\" type=\"string\">My Contacts</property>\n                <property name=\"Description\" type=\"string\">Demo displaying my contacts.</property>\n                <property name=\"ChromeType\" type=\"chrometype\">None</property>\n                <property name=\"Content\" type=\"string\">\n                    &lt;script type=\"text/javascript\" src=\"/sites/dev/siteassets/webpartdemo/wpDemo.js\"&gt;&lt;/script&gt;\n                    &lt;div id=\"wp-contacts\"&gt;&lt;/div&gt;\n                    &lt;div id=\"wp-contactsCfg\" style=\"display: none;\"&gt;&lt;/div&gt;\n                    &lt;script type=\"text/javascript\"&gt;SP.SOD.executeOrDelayUntilScriptLoaded(function() { new WebPartDemo(); }, 'wpDemo.js');&lt;/script&gt;\n                </property>\n            </properties>\n        </data>\n    </webPart>\n</webParts>"
         }
     ]
 });
@@ -63972,8 +63972,6 @@ var WebPartDemo = (function () {
      * Constructor
      */
     function WebPartDemo() {
-        // Configuration
-        this.Configuration = cfg_1.Configuration;
         // Create an instance of the webpart
         new gd_sprest_react_1.WebPart({
             cfgElementId: "wp-contactsCfg",
@@ -63984,6 +63982,8 @@ var WebPartDemo = (function () {
     }
     return WebPartDemo;
 }());
+// Configuration
+WebPartDemo.Configuration = cfg_1.Configuration;
 // Add the global variable
 window["WebPartDemo"] = WebPartDemo;
 // Let SharePoint know the script has been loaded

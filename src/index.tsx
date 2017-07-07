@@ -9,7 +9,7 @@ import { WebPartCfg } from "./wpCfg";
  */
 class WebPartDemo {
     // Configuration
-    Configuration = Configuration;
+    static Configuration = Configuration;
 
     /**
      * Constructor
