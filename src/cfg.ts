@@ -1,7 +1,7 @@
 import { Helper, List, SPTypes } from "gd-sprest";
 
 /**
- * Data Source
+ * Configuration
  */
 export const Configuration = new Helper.SPConfig({
     // List Configuration
