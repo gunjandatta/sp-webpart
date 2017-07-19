@@ -23079,7 +23079,7 @@ module.exports = g;
 Object.defineProperty(exports, "__esModule", { value: true });
 var gd_sprest_1 = __webpack_require__(23);
 /**
- * Data Source
+ * Configuration
  */
 exports.Configuration = new gd_sprest_1.Helper.SPConfig({
     // List Configuration

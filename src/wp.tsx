@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List } from "gd-sprest";
+import { List, Types } from "gd-sprest";
 import { DetailsList, Pivot, PivotItem } from "office-ui-fabric-react";
 import { IDemoWebPartCfg } from "./wpCfg";
 import "./wpDemo.scss";
@@ -7,10 +7,9 @@ import "./wpDemo.scss";
 /**
  * Contact
  */
-interface IContact {
+interface IContact extends Types.IListItemQueryResult {
     MCCategory: string;
     MCPhoneNumber: string;
-    ID: number;
     Title: string;
 }
 
