@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Web } from "gd-sprest";
-import { WebPartConfigurationPanel, IWebPartCfg, IWebPartConfigurationProps, IWebPartConfigurationState } from "gd-sprest-react";
+import { WebPartCfgPanel, IWebPartCfg, IWebPartCfgProps, IWebPartCfgState } from "gd-sprest-react";
 import { Dropdown, IDropdownOption, PrimaryButton, Spinner } from "office-ui-fabric-react";
 
 /**
@@ -13,14 +13,14 @@ export interface IDemoWebPartCfg extends IWebPartCfg {
 /**
  * Properties
  */
-interface Props extends IWebPartConfigurationProps {
+interface Props extends IWebPartCfgProps {
     cfg: IDemoWebPartCfg;
 }
 
 /**
  * State
  */
-interface State extends IWebPartConfigurationState {
+interface State extends IWebPartCfgState {
     cfg: IDemoWebPartCfg;
     lists: Array<IDropdownOption>;
 }
@@ -28,7 +28,7 @@ interface State extends IWebPartConfigurationState {
 /**
  * WebPart Configuration
  */
-export class WebPartCfg extends WebPartConfigurationPanel<Props, State> {
+export class WebPartCfg extends WebPartCfgPanel<Props, State> {
     /**
      * Constructor
      */
@@ -57,7 +57,7 @@ export class WebPartCfg extends WebPartConfigurationPanel<Props, State> {
                         options={this.state.lists}
                         selectedKey={cfg ? cfg.ListName : ""}
                     />
-                    <PrimaryButton text="Save" onClick={this.save} />
+                    <PrimaryButton text="Save" onMenuClick={this.save} />
                 </div>
             );
         }

@@ -1,4 +1,4 @@
-import { Helper, List, SPTypes } from "gd-sprest";
+import { Helper, List, SPTypes, Types } from "gd-sprest";
 
 /**
  * Configuration
@@ -10,12 +10,15 @@ export const Configuration = new Helper.SPConfig({
             // Custom fields for this list
             CustomFields: [
                 {
-                    Name: "MCCategory",
-                    SchemaXml: '<Field ID="{3356AABA-7570-45C8-A200-601720F9E2C9}" Name="MCCategory" StaticName="MCCategory" DisplayName="Category" Type="Choice"><CHOICES><CHOICE>Business</CHOICE><CHOICE>Family</CHOICE><CHOICE>Personal</CHOICE></CHOICES></Field>'
-                },
+                    choices: ["Business", "Family", "Personal"],
+                    name: "MCCategory",
+                    title: "Category",
+                    type: Helper.Types.SPCfgFieldType.Choice
+                } as Types.SPConfig.ISPConfigFieldInfoChoice,
                 {
-                    Name: "MCPhoneNumber",
-                    SchemaXml: '<Field ID="{DA322FB9-DD35-4DAC-8524-6017209BB414}" Name="MCPhoneNumber" StaticName="MCPhoneNumber" DisplayName="Phone Number" Type="Text" />'
+                    name: "MCPhoneNumber",
+                    title: "Phone Number",
+                    type: Helper.Types.SPCfgFieldType.Text
                 }
             ],
 
