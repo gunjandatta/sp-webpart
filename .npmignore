@@ -1,0 +1,9 @@
+.vscode
+.gitignore
+dist
+src
+test
+*.log
+*-lock.json
+tsconfig.json
+webpack.config.js
