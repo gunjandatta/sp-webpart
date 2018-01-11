@@ -4,7 +4,7 @@
   "description": "A SharePoint 2013 webpart demo.",
   "main": "src/index.ts",
   "scripts": {
-    "build": "tsc && webpack",
+    "build": "webpack",
     "test": "webpack --config ./webpack.test.js"
   },
   "repository": {
