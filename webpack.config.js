@@ -6,7 +6,7 @@ module.exports = {
     entry: "./src/index.ts",
     output: {
         filename: "wpDemo.js",
-        path: path.resolve(__dirname, "test/dist")
+        path: path.resolve(__dirname, "dist")
     },
     resolve: {
         extensions: [".js", ".jsx", ".ts", ".tsx"]
