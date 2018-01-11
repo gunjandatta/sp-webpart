@@ -1,16 +1,20 @@
 import { WebPart, IWebPart } from "../../build";
+import { Configuration } from "./cfg";
 
 /**
- * JS Demo WebPart
+ * Demo WebPart
  */
-export class JSDemoWebPart {
+export class DemoWebPart {
+    // Configuration
+    static Configuration = Configuration;
+
     /**
      * Constructor
      */
     constructor() {
-        // Create an instance of the webpart
+        // Create an instance of the demo webpart
         new WebPart({
-            elementId: "wp-jsDemo",
+            elementId: "wp-demo",
             onRenderDisplay: this.renderDisplay,
             onRenderEdit: this.renderEdit
         });
@@ -28,9 +32,3 @@ export class JSDemoWebPart {
         wp.el.innerHTML = "<h3>The page is being edited.</h3>";
     }
 }
-
-// Add the global variable
-window["WebPartDemo"] = DemoWebPart;
-
-// Let SharePoint know the script has been loaded
-window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("wpDemo.js");
