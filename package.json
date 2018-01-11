@@ -1,5 +1,5 @@
 {
-  "name": "sp-webpart",
+  "name": "gd-sp-webpart",
   "version": "0.0.1",
   "description": "A SharePoint 2013 webpart class.",
   "main": "build/sp-webpart.js",
