@@ -1,6 +1,15 @@
 import { Helper, List, SPTypes, Types } from "gd-sprest";
 
 /**
+ * Contact
+ */
+interface IContact extends Types.IListItemQueryResult {
+    MCCategory: string;
+    MCPhoneNumber: string;
+    Title: string;
+}
+
+/**
  * Configuration
  */
 export const Configuration = new Helper.SPConfig({
