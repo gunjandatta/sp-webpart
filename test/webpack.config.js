@@ -1,5 +1,4 @@
 var path = require("path");
-var TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 var webpack = require("webpack");
 
 // WebPack Configuration
@@ -7,7 +6,7 @@ module.exports = {
     entry: "./test/index.ts",
     output: {
         filename: "wpDemo.js",
-        path: path.resolve(__dirname, "test")
+        path: path.resolve(__dirname, ".")
     },
     resolve: {
         extensions: [".js", ".jsx", ".ts", ".tsx"]
@@ -37,13 +36,6 @@ module.exports = {
                     }
                 ]
             }
-        ],
-
-        // Plugins
-        resolve: {
-            plugins: [new TsconfigPathsPlugin({
-                configFile: "./tsconfig-test.json"
-            })]
-        }
+        ]
     }
 }
