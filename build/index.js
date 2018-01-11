@@ -8,4 +8,5 @@ var webpart_1 = require("./webpart");
 // Create the global variable
 var $REST = window["$REST"] || {};
 $REST.WebPart = webpart_1.WebPart;
+window["$REST"] = $REST;
 //# sourceMappingURL=index.js.map
