@@ -7,8 +7,8 @@ export const Configuration = new Helper.SPConfig({
     // WebPart Configuration
     WebPartCfg: [
         {
-            FileName: "wpContacts.webpart",
-            Group: "Demo - Contacts",
+            FileName: "wpDemo.webpart",
+            Group: "Demo",
             XML: `<?xml version="1.0" encoding="utf-8"?>
 <webParts>
     <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
@@ -22,7 +22,7 @@ export const Configuration = new Helper.SPConfig({
                 <property name="Description" type="string">Demo webpart.</property>
                 <property name="ChromeType" type="chrometype">TitleOnly</property>
                 <property name="Content" type="string">
-                    &lt;script type="text/javascript" src="/sites/dev/siteassets/demo.js"&gt;&lt;/script&gt;
+                    &lt;script type="text/javascript" src="/sites/dev/siteassets/wpDemo.js"&gt;&lt;/script&gt;
                     &lt;div id="wp-demo"&gt;&lt;/div&gt;
                     &lt;script type="text/javascript"&gt;SP.SOD.executeOrDelayUntilScriptLoaded(function() { new WebPartDemo(); }, 'wpDemo.js');&lt;/script&gt;
                 </property>
