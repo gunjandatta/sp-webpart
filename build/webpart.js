@@ -1,24 +1,9 @@
 "use strict";
-
-function __export(m) {
-    for (var p in m) {
-        if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-    }
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./webpart"));
-var webpart_1 = require("./webpart");
-// Create the global variable
-var $REST = window["$REST"] || {};
-$REST.WebPart = webpart_1.WebPart;
-//# sourceMappingURL=index.js.map
-"use strict";
-
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Web Part
  */
-var WebPart = /** @class */function () {
+var WebPart = /** @class */ (function () {
     /**
      * Constructor
      * @param props - The webpart properties.
@@ -90,7 +75,8 @@ var WebPart = /** @class */function () {
                                         };
                                         break;
                                     }
-                                } else {
+                                }
+                                else {
                                     // Set the target information
                                     targetInfo = {
                                         cfg: {
@@ -101,7 +87,8 @@ var WebPart = /** @class */function () {
                                     };
                                     break;
                                 }
-                            } catch (ex) {
+                            }
+                            catch (ex) {
                                 // Set the target information
                                 targetInfo = {
                                     cfg: {
@@ -115,7 +102,8 @@ var WebPart = /** @class */function () {
                             }
                             // Break from the loop
                             break;
-                        } else {
+                        }
+                        else {
                             // Set the target information
                             targetInfo = {
                                 cfg: {
@@ -133,7 +121,8 @@ var WebPart = /** @class */function () {
                     // Log
                     console.log("[sp-webpart] Error - Unable to find elements with id '" + _this._props.elementId + "'.");
                 }
-            } else {
+            }
+            else {
                 // Log
                 console.log("[sp-webpart] The target element id is not defined.");
             }
@@ -167,12 +156,14 @@ var WebPart = /** @class */function () {
                     // Execute the render edit event
                     returnVal = _this._props.onRenderEditElement(_this._wp);
                 }
-            } else {
+            }
+            else {
                 // See if the configuration is defined, but has no value
                 if (_this._wp.cfg || (_this._props.cfgElementId || "").length == 0) {
                     // Execute the render edit event
                     returnVal = _this._props.onRenderDisplay(_this._wp);
-                } else {
+                }
+                else {
                     // Render a message
                     _this._wp.el.innerHTML = '<h3>Please edit the page and configure the webpart.</h3>';
                 }
@@ -188,7 +179,8 @@ var WebPart = /** @class */function () {
                     // Execute the post render event
                     _this._props.onPostRender ? _this._props.onPostRender(_this._wp) : null;
                 });
-            } else {
+            }
+            else {
                 // Execute the post render event
                 _this._props.onPostRender ? _this._props.onPostRender(_this._wp) : null;
             }
@@ -227,7 +219,7 @@ var WebPart = /** @class */function () {
                     WebPartDefinition: wpDef,
                     WebPartId: wp.get_id()
                 });
-            },
+            }, 
             // Error
             function () {
                 var args = [];
@@ -277,8 +269,6 @@ var WebPart = /** @class */function () {
         return false;
     };
     return WebPart;
-}();
+}());
 exports.WebPart = WebPart;
 //# sourceMappingURL=webpart.js.map
-
-//# sourceMappingURL=gd-sp-webpart.js.map
