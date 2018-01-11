@@ -67,7 +67,7 @@ export interface IWebPartProps {
     onRenderDisplay?: (wp: IWebPart) => any;
 
     /** The render event triggered when the page is in 'Edit' mode */
-    onRenderEditElement?: (wp: IWebPart) => any;
+    onRenderEdit?: (wp: IWebPart) => any;
 
     /** The target element id to render the webpart to */
     elementId: string;
@@ -328,9 +328,9 @@ export class WebPart {
             this.addHelpLink();
 
             // Call the render event
-            if (this._props.onRenderEditElement) {
+            if (this._props.onRenderEdit) {
                 // Execute the render edit event
-                returnVal = this._props.onRenderEditElement(this._wp);
+                returnVal = this._props.onRenderEdit(this._wp);
             }
         } else {
             // See if the configuration is defined, but has no value

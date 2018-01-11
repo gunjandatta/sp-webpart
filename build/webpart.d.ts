@@ -34,7 +34,7 @@ export interface IWebPartProps {
     /** The render event triggered when the page is in 'Display' mode */
     onRenderDisplay?: (wp: IWebPart) => any;
     /** The render event triggered when the page is in 'Edit' mode */
-    onRenderEditElement?: (wp: IWebPart) => any;
+    onRenderEdit?: (wp: IWebPart) => any;
     /** The target element id to render the webpart to */
     elementId: string;
 }

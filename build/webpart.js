@@ -152,9 +152,9 @@ var WebPart = /** @class */ (function () {
                 // Add the help link
                 _this.addHelpLink();
                 // Call the render event
-                if (_this._props.onRenderEditElement) {
+                if (_this._props.onRenderEdit) {
                     // Execute the render edit event
-                    returnVal = _this._props.onRenderEditElement(_this._wp);
+                    returnVal = _this._props.onRenderEdit(_this._wp);
                 }
             }
             else {
