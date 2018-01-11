@@ -73,7 +73,6 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(30));
 __export(__webpack_require__(31));
 __export(__webpack_require__(32));
 __export(__webpack_require__(33));
@@ -83,6 +82,7 @@ __export(__webpack_require__(36));
 __export(__webpack_require__(37));
 __export(__webpack_require__(38));
 __export(__webpack_require__(39));
+__export(__webpack_require__(40));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -92,9 +92,9 @@ __export(__webpack_require__(39));
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var requestType_1 = __webpack_require__(11);
+var requestType_1 = __webpack_require__(12);
 exports.RequestType = requestType_1.RequestType;
-var SPTypes = __webpack_require__(12);
+var SPTypes = __webpack_require__(13);
 exports.SPTypes = SPTypes;
 //# sourceMappingURL=index.js.map
 
@@ -108,9 +108,8 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(29));
+__export(__webpack_require__(30));
 __export(__webpack_require__(3));
-__export(__webpack_require__(48));
 __export(__webpack_require__(49));
 __export(__webpack_require__(50));
 __export(__webpack_require__(51));
@@ -121,6 +120,7 @@ __export(__webpack_require__(55));
 __export(__webpack_require__(56));
 __export(__webpack_require__(57));
 __export(__webpack_require__(58));
+__export(__webpack_require__(59));
 __export(__webpack_require__(5));
 //# sourceMappingURL=index.js.map
 
@@ -131,14 +131,14 @@ __export(__webpack_require__(5));
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var app_1 = __webpack_require__(40);
-var dependencies_1 = __webpack_require__(41);
-var field_1 = __webpack_require__(42);
-var jslink_1 = __webpack_require__(43);
-var loader_1 = __webpack_require__(44);
-var parse_1 = __webpack_require__(45);
-var spCfg_1 = __webpack_require__(46);
-var types_1 = __webpack_require__(47);
+var app_1 = __webpack_require__(41);
+var dependencies_1 = __webpack_require__(42);
+var field_1 = __webpack_require__(43);
+var jslink_1 = __webpack_require__(44);
+var loader_1 = __webpack_require__(45);
+var parse_1 = __webpack_require__(46);
+var spCfg_1 = __webpack_require__(47);
+var types_1 = __webpack_require__(48);
 ;
 /**
  * Helper Methods
@@ -165,18 +165,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Mapper
  */
-var mapper_1 = __webpack_require__(10);
-var mapper_2 = __webpack_require__(13);
-var mapper_3 = __webpack_require__(14);
-var mapper_4 = __webpack_require__(15);
-var mapper_5 = __webpack_require__(16);
-var mapper_6 = __webpack_require__(17);
-var mapper_7 = __webpack_require__(18);
-var mapper_8 = __webpack_require__(19);
-var mapper_9 = __webpack_require__(20);
-var mapper_10 = __webpack_require__(21);
-var mapper_11 = __webpack_require__(22);
-var mapper_12 = __webpack_require__(23);
+var mapper_1 = __webpack_require__(11);
+var mapper_2 = __webpack_require__(14);
+var mapper_3 = __webpack_require__(15);
+var mapper_4 = __webpack_require__(16);
+var mapper_5 = __webpack_require__(17);
+var mapper_6 = __webpack_require__(18);
+var mapper_7 = __webpack_require__(19);
+var mapper_8 = __webpack_require__(20);
+var mapper_9 = __webpack_require__(21);
+var mapper_10 = __webpack_require__(22);
+var mapper_11 = __webpack_require__(23);
+var mapper_12 = __webpack_require__(24);
 exports.Mapper = {
     attachment: mapper_3.attachment, attachmentfiles: mapper_3.attachmentfiles,
     audit: mapper_1.audit,
@@ -214,7 +214,7 @@ exports.Mapper = {
 /**
  * Types
  */
-var Types = __webpack_require__(24);
+var Types = __webpack_require__(25);
 exports.Types = Types;
 //# sourceMappingURL=index.js.map
 
@@ -272,9 +272,24 @@ exports.Web = _Web;
 "use strict";
 
 
+function __export(m) {
+    for (var p in m) {
+        if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    }
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-var sp_webpart_1 = __webpack_require__(7);
-var cfg_1 = __webpack_require__(8);
+__export(__webpack_require__(7));
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var sp_webpart_1 = __webpack_require__(8);
+var cfg_1 = __webpack_require__(9);
 /**
  * Demo WebPart
  */
@@ -312,289 +327,20 @@ window["WebPartDemo"] = DemoWebPart;
 window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("wpDemo.js");
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 8 */
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Web Part
- */
-var WebPart = /** @class */ (function () {
-    /**
-     * Constructor
-     * @param props - The webpart properties.
-     */
-    function WebPart(props) {
-        var _this = this;
-        this._props = null;
-        this._wp = null;
-        /**
-         * Method to add the help link to a script part editor.
-         * @wpId - The webpart id.
-         */
-        this.addHelpLink = function () {
-            // Ensure the help properties exist
-            if (_this._props.helpProps) {
-                // Get the webpart's "Snippet"
-                var link = document.querySelector("div[webpartid='" + _this._wp.wpId + "'] a[title='Edit Snippet']");
-                if (link) {
-                    // Create the help link
-                    var helpLink = document.createElement("a");
-                    helpLink.href = _this._props.helpProps.url || "#";
-                    helpLink.style.paddingLeft = "10px";
-                    helpLink.setAttribute("role", "button");
-                    helpLink.title = _this._props.helpProps.title || "Help";
-                    helpLink.innerHTML = "<span class='ms-metadata'>" + helpLink.title + "</span>";
-                    helpLink.target = "_blank";
-                    // Append the link
-                    link.parentElement.appendChild(helpLink);
-                }
-            }
-        };
-        /**
-         * Method to get the webpart information
-         */
-        this.getWebPartInfo = function () {
-            var targetInfo = {
-                cfg: null,
-                el: null,
-                wpId: null
-            };
-            // Ensure the element id exists
-            if (_this._props.elementId) {
-                // Get the webpart elements
-                var elements = document.querySelectorAll("#" + _this._props.elementId);
-                for (var i = 0; i < elements.length; i++) {
-                    var elWebPart = elements[i];
-                    // See if we have already configured this element
-                    if (elWebPart.getAttribute("data-isConfigured")) {
-                        continue;
-                    }
-                    // Get the webpart id
-                    var wpId = _this.getWebPartId(elWebPart);
-                    if (wpId) {
-                        // See if the configuration element exists
-                        var elCfg = _this._props.cfgElementId ? elWebPart.parentElement.querySelector("#" + _this._props.cfgElementId) : null;
-                        if (elCfg) {
-                            try {
-                                // Parse the data
-                                var cfg = elCfg.innerText.trim();
-                                cfg = JSON.parse(targetInfo.cfg);
-                                // See if the webaprt id exists
-                                if (cfg.WebPartId) {
-                                    // See if it's for this webpart
-                                    if (cfg.WebPartId == wpId) {
-                                        // Set the target information
-                                        targetInfo = {
-                                            cfg: cfg,
-                                            el: elWebPart,
-                                            wpId: wpId
-                                        };
-                                        break;
-                                    }
-                                }
-                                else {
-                                    // Set the target information
-                                    targetInfo = {
-                                        cfg: cfg,
-                                        el: elWebPart,
-                                        wpId: wpId
-                                    };
-                                    break;
-                                }
-                            }
-                            catch (ex) {
-                                // Set the target information
-                                targetInfo = {
-                                    cfg: {},
-                                    el: elWebPart,
-                                    wpId: wpId
-                                };
-                                // Log
-                                console.log("[sp-webpart] Error parsing the configuration for element '" + _this._props.cfgElementId + "'.");
-                            }
-                            // Break from the loop
-                            break;
-                        }
-                        else {
-                            // Set the target information
-                            targetInfo = {
-                                cfg: null,
-                                el: elWebPart,
-                                wpId: wpId
-                            };
-                            break;
-                        }
-                    }
-                }
-                // Ensure elements were found
-                if (elements.length == 0) {
-                    // Log
-                    console.log("[sp-webpart] Error - Unable to find elements with id '" + _this._props.elementId + "'.");
-                }
-            }
-            else {
-                // Log
-                console.log("[sp-webpart] The target element id is not defined.");
-            }
-            // Ensure the target element exists
-            if (targetInfo.el) {
-                // Set the configuration flag
-                targetInfo.el.setAttribute("data-isConfigured", "true");
-            }
-            // Return the target information
-            return targetInfo;
-        };
-        /**
-         * Method to render the webpart
-         */
-        this.render = function () {
-            var element = null;
-            // Get the webpart information
-            _this._wp = _this.getWebPartInfo();
-            if (_this._wp == null || _this._wp.el == null) {
-                // Log
-                console.log("[sp-webpart] The target webpart element '" + _this._props.elementId + "' was not found.");
-                return;
-            }
-            // See if the page is being edited
-            var returnVal = null;
-            if (_this.isEditMode()) {
-                // Add the help link
-                _this.addHelpLink();
-                // Call the render event
-                if (_this._props.onRenderEditElement) {
-                    // Execute the render edit event
-                    returnVal = _this._props.onRenderEditElement(_this._wp);
-                }
-            }
-            else {
-                // See if the configuration is defined, but has no value
-                if (_this._wp.cfg || (_this._props.cfgElementId || "").length == 0) {
-                    // Execute the render edit event
-                    returnVal = _this._props.onRenderDisplay(_this._wp);
-                }
-                else {
-                    // Render a message
-                    _this._wp.el.innerHTML = '<h3>Please edit the page and configure the webpart.</h3>';
-                }
-            }
-            // See if a promise was returned
-            if (returnVal && returnVal.then) {
-                // Wait for the request to complete
-                returnVal.then(function () {
-                    var args = [];
-                    for (var _i = 0; _i < arguments.length; _i++) {
-                        args[_i] = arguments[_i];
-                    }
-                    // Execute the post render event
-                    _this._props.onPostRender ? _this._props.onPostRender(_this._wp) : null;
-                });
-            }
-            else {
-                // Execute the post render event
-                _this._props.onPostRender ? _this._props.onPostRender(_this._wp) : null;
-            }
-        };
-        // Set the properties
-        this._props = props || {};
-        // Add a load event
-        window.addEventListener("load", function () {
-            // Render the component
-            _this.render();
-        });
-    }
-    /**
-     * Method to get the webpart
-     */
-    WebPart.prototype.getWebPart = function (wpId) {
-        // Return a promise
-        return new Promise(function (resolve, reject) {
-            // Get the current context
-            var context = SP.ClientContext.get_current();
-            // Get the webpart from the current page
-            var page = context.get_web().getFileByServerRelativeUrl(_spPageContextInfo.serverRequestPath);
-            var wpMgr = page.getLimitedWebPartManager(SP.WebParts.PersonalizationScope.shared);
-            var wpDef = wpMgr.get_webParts().getById(wpId);
-            var wp = wpDef.get_webPart();
-            context.load(wp, "Properties");
-            // Execute the request
-            context.executeQueryAsync(
-            // Success
-            function () {
-                // Resolve the promise
-                resolve({
-                    Context: context,
-                    Properties: wp.get_properties(),
-                    WebPart: wp,
-                    WebPartDefinition: wpDef,
-                    WebPartId: wp.get_id()
-                });
-            }, 
-            // Error
-            function () {
-                var args = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    args[_i] = arguments[_i];
-                }
-                // Reject the promise
-                reject(args[1] ? args[1].get_message() : "");
-            });
-        });
-    };
-    /**
-     * Method to get the webpart id for a specified element
-     * @param el - The target element.
-     */
-    WebPart.prototype.getWebPartId = function (el) {
-        // Loop until we find the webpart id
-        while (el) {
-            // See if this element contains the webpart id
-            var wpId = el.getAttribute("webpartid");
-            if (wpId) {
-                // Return the webpart id
-                return wpId;
-            }
-            // Check the parent
-            el = el.parentElement;
-        }
-        // Unable to detect
-        return "";
-    };
-    /**
-     * Method to detect if a page is being edited
-     */
-    WebPart.prototype.isEditMode = function () {
-        var formName = MSOWebPartPageFormName ? MSOWebPartPageFormName : "";
-        // Get the form
-        var form = document.forms[MSOWebPartPageFormName];
-        if (form) {
-            // Get the wiki page mode
-            var wikiPageMode = form._wikiPageMode ? form._wikiPageMode.value : null;
-            // Get the webpart page mode
-            var wpPageMode = form.MSOLayout_InDesignMode ? form.MSOLayout_InDesignMode.value : null;
-            // Determine if the page is being edited
-            return wikiPageMode == "Edit" || wpPageMode == "1";
-        }
-        // Unable to determine
-        return false;
-    };
-    return WebPart;
-}());
-exports.WebPart = WebPart;
-//# sourceMappingURL=sp-webpart.js.map
+throw new Error("Module build failed: Error: Couldn't find preset \"es2015\" relative to directory \"C:\\\\Users\\\\gunja\\\\Source\\\\Repos\\\\sp-webpart\\\\build\"\n    at C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-core\\lib\\transformation\\file\\options\\option-manager.js:293:19\n    at Array.map (native)\n    at OptionManager.resolvePresets (C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-core\\lib\\transformation\\file\\options\\option-manager.js:275:20)\n    at OptionManager.mergePresets (C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-core\\lib\\transformation\\file\\options\\option-manager.js:264:10)\n    at OptionManager.mergeOptions (C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-core\\lib\\transformation\\file\\options\\option-manager.js:249:14)\n    at OptionManager.init (C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-core\\lib\\transformation\\file\\options\\option-manager.js:368:12)\n    at File.initOptions (C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-core\\lib\\transformation\\file\\index.js:212:65)\n    at new File (C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-core\\lib\\transformation\\file\\index.js:135:24)\n    at Pipeline.transform (C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-core\\lib\\transformation\\pipeline.js:46:16)\n    at transpile (C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-loader\\lib\\index.js:50:20)\n    at Object.module.exports (C:\\Users\\gunja\\Source\\Repos\\sp-webpart\\test\\node_modules\\babel-loader\\lib\\index.js:175:20)");
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var gd_sprest_1 = __webpack_require__(9);
+var gd_sprest_1 = __webpack_require__(10);
 /**
  * Configuration
  */
@@ -672,7 +418,7 @@ exports.Configuration.addTestData = function () {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -755,7 +501,7 @@ if (global == null || global.__ver == null || global.__ver < exports.$REST.__ver
 //# sourceMappingURL=gd-sprest.js.map
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -775,7 +521,7 @@ exports.audit = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -809,7 +555,7 @@ exports.RequestType = {
 //# sourceMappingURL=requestType.js.map
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1353,7 +1099,7 @@ exports.ViewType = {
 //# sourceMappingURL=sptypes.js.map
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1401,7 +1147,7 @@ exports.eventreceivers = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1714,7 +1460,7 @@ exports.limitedwebpartmanager = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2260,7 +2006,7 @@ exports.views = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2290,7 +2036,7 @@ exports.navigationservicerest = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2310,7 +2056,7 @@ exports.propertyvalues = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2330,7 +2076,7 @@ exports.search = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2431,7 +2177,7 @@ exports.roledefinitions = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2938,7 +2684,7 @@ exports.webs = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3113,7 +2859,7 @@ exports.userprofile = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3268,7 +3014,7 @@ exports.users = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3318,30 +3064,21 @@ exports.usercustomactions = {
 //# sourceMappingURL=mapper.js.map
 
 /***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var ComplexTypes = __webpack_require__(25);
-exports.ComplexTypes = ComplexTypes;
-var Results = __webpack_require__(26);
-exports.Results = Results;
-var SPConfig = __webpack_require__(27);
-exports.SPConfig = SPConfig;
-var SPTypes = __webpack_require__(28);
-exports.SPTypes = SPTypes;
-//# sourceMappingURL=types.js.map
-
-/***/ }),
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=complexTypes.js.map
+var ComplexTypes = __webpack_require__(26);
+exports.ComplexTypes = ComplexTypes;
+var Results = __webpack_require__(27);
+exports.Results = Results;
+var SPConfig = __webpack_require__(28);
+exports.SPConfig = SPConfig;
+var SPTypes = __webpack_require__(29);
+exports.SPTypes = SPTypes;
+//# sourceMappingURL=types.js.map
 
 /***/ }),
 /* 26 */
@@ -3350,7 +3087,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=results.js.map
+//# sourceMappingURL=complexTypes.js.map
 
 /***/ }),
 /* 27 */
@@ -3359,7 +3096,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=spcfg.js.map
+//# sourceMappingURL=results.js.map
 
 /***/ }),
 /* 28 */
@@ -3368,10 +3105,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=sptypes.js.map
+//# sourceMappingURL=spcfg.js.map
 
 /***/ }),
 /* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+//# sourceMappingURL=sptypes.js.map
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3659,7 +3405,7 @@ exports.ContextInfo = _ContextInfo;
 //# sourceMappingURL=contextInfo.js.map
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3934,7 +3680,7 @@ exports.BaseHelper = BaseHelper;
 //# sourceMappingURL=baseHelper.js.map
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4228,7 +3974,7 @@ exports.BaseRequest = BaseRequest;
 //# sourceMappingURL=baseRequest.js.map
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4404,7 +4150,7 @@ exports.BaseExecution = BaseExecution;
 //# sourceMappingURL=baseExecution.js.map
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4494,7 +4240,7 @@ exports.Base = Base;
 //# sourceMappingURL=base.js.map
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4591,7 +4337,7 @@ exports.Batch = Batch;
 //# sourceMappingURL=batch.js.map
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4847,7 +4593,7 @@ exports.MethodInfo = MethodInfo;
 //# sourceMappingURL=methodInfo.js.map
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4973,7 +4719,7 @@ exports.OData = OData;
 //# sourceMappingURL=oData.js.map
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5040,7 +4786,7 @@ exports.Promise = Promise;
 //# sourceMappingURL=promise.js.map
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5181,7 +4927,7 @@ exports.TargetInfo = TargetInfo;
 //# sourceMappingURL=targetInfo.js.map
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5352,7 +5098,7 @@ exports.XHRRequest = XHRRequest;
 //# sourceMappingURL=xhrRequest.js.map
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5653,7 +5399,7 @@ exports.AppHelper = {
 //# sourceMappingURL=app.js.map
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5731,7 +5477,7 @@ exports.Dependencies = Dependencies;
 //# sourceMappingURL=dependencies.js.map
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6093,7 +5839,7 @@ exports.FieldSchemaXML = new _FieldSchemaXML();
 //# sourceMappingURL=field.js.map
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6467,7 +6213,7 @@ exports.JSLinkHelper = {
 //# sourceMappingURL=jslink.js.map
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6527,7 +6273,7 @@ exports.Loader = {
 //# sourceMappingURL=loader.js.map
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6557,7 +6303,7 @@ exports.parse = function (jsonString) {
 //# sourceMappingURL=parse.js.map
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7625,7 +7371,7 @@ exports.SPConfig = SPConfig;
 //# sourceMappingURL=spCfg.js.map
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7669,7 +7415,7 @@ exports.HelperTypes = {
 //# sourceMappingURL=types.js.map
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7790,7 +7536,7 @@ exports.JSLink = _JSLink;
 //# sourceMappingURL=jslink.js.map
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7854,7 +7600,7 @@ exports.List = _List;
 //# sourceMappingURL=list.js.map
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7901,7 +7647,7 @@ exports.Navigation = _Navigation;
 //# sourceMappingURL=navigation.js.map
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7943,7 +7689,7 @@ exports.PeopleManager = _PeopleManager;
 //# sourceMappingURL=peopleManager.js.map
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7986,7 +7732,7 @@ exports.PeoplePicker = _PeoplePicker;
 //# sourceMappingURL=peoplePicker.js.map
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8029,7 +7775,7 @@ exports.ProfileLoader = _ProfileLoader;
 //# sourceMappingURL=profileLoader.js.map
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8109,7 +7855,7 @@ exports.Search = _Search;
 //# sourceMappingURL=search.js.map
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8166,7 +7912,7 @@ exports.Site = _Site;
 //# sourceMappingURL=site.js.map
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8236,7 +7982,7 @@ exports.SocialFeed = (new _SocialFeed());
 //# sourceMappingURL=socialFeed.js.map
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8279,7 +8025,7 @@ exports.UserProfile = _UserProfile;
 //# sourceMappingURL=userProfile.js.map
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

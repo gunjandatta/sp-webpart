@@ -1,22 +1,20 @@
 /**
- * The help link properties.
- */
-export interface IWebPartLinkProps {
-    /** The link title */
-    title?: string;
-    /** The link url */
-    url: string;
-}
-/**
  * WebPart
  */
 export interface IWebPart {
     /** The configuration */
-    cfg: any;
+    cfg: IWebPartCfg;
     /** The element to render the webpart to */
     el: HTMLElement;
     /** The webpart id */
     wpId: string;
+}
+/**
+ * WebPart Configuration
+ */
+export interface IWebPartCfg {
+    /** The webpart id */
+    WebPartId: string;
 }
 /**
  * The webpart properties
@@ -25,7 +23,12 @@ export interface IWebPartProps {
     /** The optional configuration element id */
     cfgElementId?: string;
     /** The optional help link properties */
-    helpProps?: IWebPartLinkProps;
+    helpProps?: {
+        /** The link title */
+        title?: string;
+        /** The link url */
+        url: string;
+    };
     /** The post render event */
     onPostRender?: (wp: IWebPart) => void;
     /** The render event triggered when the page is in 'Display' mode */

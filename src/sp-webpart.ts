@@ -3,28 +3,25 @@ declare var SP;
 declare var MSOWebPartPageFormName;
 
 /**
- * The help link properties.
- */
-export interface IWebPartLinkProps {
-    /** The link title */
-    title?: string;
-
-    /** The link url */
-    url: string;
-}
-
-/**
  * WebPart
  */
 export interface IWebPart {
     /** The configuration */
-    cfg: any;
+    cfg: IWebPartCfg;
 
     /** The element to render the webpart to */
     el: HTMLElement;
 
     /** The webpart id */
     wpId: string;
+}
+
+/**
+ * WebPart Configuration
+ */
+export interface IWebPartCfg {
+    /** The webpart id */
+    WebPartId: string;
 }
 
 /**
@@ -55,7 +52,13 @@ export interface IWebPartProps {
     cfgElementId?: string;
 
     /** The optional help link properties */
-    helpProps?: IWebPartLinkProps;
+    helpProps?: {
+        /** The link title */
+        title?: string;
+
+        /** The link url */
+        url: string;
+    };
 
     /** The post render event */
     onPostRender?: (wp: IWebPart) => void;
@@ -204,9 +207,8 @@ export class WebPart {
                     let elCfg: HTMLElement = this._props.cfgElementId ? elWebPart.parentElement.querySelector("#" + this._props.cfgElementId) : null as any;
                     if (elCfg) {
                         try {
-                            // Parse the data
-                            let cfg: any = elCfg.innerText.trim();
-                            cfg = JSON.parse(targetInfo.cfg);
+                            // Parse the configuration
+                            let cfg: IWebPartCfg = JSON.parse(elCfg.innerText.trim());
 
                             // See if the webaprt id exists
                             if (cfg.WebPartId) {
@@ -223,7 +225,9 @@ export class WebPart {
                             } else {
                                 // Set the target information
                                 targetInfo = {
-                                    cfg,
+                                    cfg: {
+                                        WebPartId: wpId
+                                    },
                                     el: elWebPart,
                                     wpId: wpId
                                 };
@@ -233,7 +237,9 @@ export class WebPart {
                         catch (ex) {
                             // Set the target information
                             targetInfo = {
-                                cfg: {},
+                                cfg: {
+                                    WebPartId: wpId
+                                },
                                 el: elWebPart,
                                 wpId: wpId
                             };
@@ -247,7 +253,9 @@ export class WebPart {
                     } else {
                         // Set the target information
                         targetInfo = {
-                            cfg: null,
+                            cfg: {
+                                WebPartId: wpId
+                            },
                             el: elWebPart,
                             wpId: wpId
                         };

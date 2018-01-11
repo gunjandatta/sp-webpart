@@ -61,9 +61,8 @@ var WebPart = /** @class */ (function () {
                         var elCfg = _this._props.cfgElementId ? elWebPart.parentElement.querySelector("#" + _this._props.cfgElementId) : null;
                         if (elCfg) {
                             try {
-                                // Parse the data
-                                var cfg = elCfg.innerText.trim();
-                                cfg = JSON.parse(targetInfo.cfg);
+                                // Parse the configuration
+                                var cfg = JSON.parse(elCfg.innerText.trim());
                                 // See if the webaprt id exists
                                 if (cfg.WebPartId) {
                                     // See if it's for this webpart
@@ -80,7 +79,9 @@ var WebPart = /** @class */ (function () {
                                 else {
                                     // Set the target information
                                     targetInfo = {
-                                        cfg: cfg,
+                                        cfg: {
+                                            WebPartId: wpId
+                                        },
                                         el: elWebPart,
                                         wpId: wpId
                                     };
@@ -90,7 +91,9 @@ var WebPart = /** @class */ (function () {
                             catch (ex) {
                                 // Set the target information
                                 targetInfo = {
-                                    cfg: {},
+                                    cfg: {
+                                        WebPartId: wpId
+                                    },
                                     el: elWebPart,
                                     wpId: wpId
                                 };
@@ -103,7 +106,9 @@ var WebPart = /** @class */ (function () {
                         else {
                             // Set the target information
                             targetInfo = {
-                                cfg: null,
+                                cfg: {
+                                    WebPartId: wpId
+                                },
                                 el: elWebPart,
                                 wpId: wpId
                             };

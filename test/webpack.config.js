@@ -3,7 +3,7 @@ var webpack = require("webpack");
 
 // WebPack Configuration
 module.exports = {
-    entry: "./src/wpDemo.ts",
+    entry: "./build/index.js",
     output: {
         filename: "wpDemo.js",
         path: path.resolve(__dirname, "dist")
@@ -15,8 +15,8 @@ module.exports = {
         // Loaders
         loaders: [
             {
-                // Target the typescript files
-                test: /\.tsx?$/,
+                // Target the JSX files
+                test: /\.jsx?$/,
                 // Exclude the npm libraries
                 exclude: /node_modules/,
                 // Define the compiler to use
@@ -29,10 +29,6 @@ module.exports = {
                             // Ensure the javascript will work in legacy browsers
                             presets: ["es2015"]
                         }
-                    },
-                    {
-                        // Compile the TypeScript code to JSX
-                        loader: "ts-loader"
                     }
                 ]
             }
