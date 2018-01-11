@@ -1,23 +1,18 @@
-import { WebPart, IWebPart } from "../build";
-import { Configuration } from "./cfg";
+import { WebPart, IWebPart } from "../../build";
 
 /**
- * Demo WebPart
+ * JS Demo WebPart
  */
-export class DemoWebPart {
-    // Configuration
-    static Configuration = Configuration;
-
+export class JSDemoWebPart {
     /**
      * Constructor
      */
     constructor() {
         // Create an instance of the webpart
         new WebPart({
-            cfgElementId: "wp-demoCfg",
-            elementId: "wp-demo",
+            elementId: "wp-jsDemo",
             onRenderDisplay: this.renderDisplay,
-            onRenderEditElement: this.renderEdit
+            onRenderEdit: this.renderEdit
         });
     }
 

@@ -6,7 +6,7 @@
   "typings": "build/index.d.ts",
   "scripts": {
     "build": "tsc && webpack",
-    "test": "tsc && webpack"
+    "test": "webpack --config ./webpack.test.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
+    "gd-sprest": "^2.5.9",
+    "ts-loader": "^3.2.0",
     "webpack": "^3.10.0"
   }
 }
