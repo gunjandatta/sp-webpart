@@ -1,12 +1,5 @@
 {
     "compilerOptions": {
-        "declaration": true,
-        "lib": [
-            "dom",
-            "es2015"
-        ],
-        "outDir": "./build",
-        "sourceMap": true,
         "target": "es5"
     },
     "include": [

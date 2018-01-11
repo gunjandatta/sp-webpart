@@ -3,10 +3,13 @@ var webpack = require("webpack");
 
 // WebPack Configuration
 module.exports = {
-    entry: "./build/index.js",
+    entry: "./src/index.ts",
     output: {
-        filename: "gd-sp-webpart.js",
-        path: path.resolve(__dirname, "dist")
+        filename: "wpDemo.js",
+        path: path.resolve(__dirname, "test/dist")
+    },
+    resolve: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
     },
     module: {
         rules: [
@@ -17,6 +20,10 @@ module.exports = {
                 options: {
                     presets: ["es2015"]
                 }
+            },
+            {
+                test: /\.ts$/,
+                loader: "ts-loader"
             }
         ]
     }

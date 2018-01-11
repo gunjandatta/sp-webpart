@@ -1,4 +1,4 @@
-import { WebPart, IWebPart } from "../../build";
+import { Helper, Types } from "gd-sprest";
 import { Configuration } from "./cfg";
 
 /**
@@ -13,7 +13,7 @@ export class DemoWebPart {
      */
     constructor() {
         // Create an instance of the demo webpart
-        new WebPart({
+        new Helper.WebPart({
             elementId: "wp-demo",
             onRenderDisplay: this.renderDisplay,
             onRenderEdit: this.renderEdit
@@ -21,13 +21,13 @@ export class DemoWebPart {
     }
 
     // Render the display component
-    private renderDisplay = (wp: IWebPart) => {
+    private renderDisplay = (wp: Types.Helper.WebPart.IWebPart) => {
         // Set the display content
         wp.el.innerHTML = "<h3>The page is being displayed.</h3>";
     }
 
     // Render the edit component
-    private renderEdit = (wp: IWebPart) => {
+    private renderEdit = (wp: Types.Helper.WebPart.IWebPart) => {
         // Set the display content
         wp.el.innerHTML = "<h3>The page is being edited.</h3>";
     }

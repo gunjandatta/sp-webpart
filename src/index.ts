@@ -1,7 +1,7 @@
-export * from "./webpart";
-import { WebPart } from "./webpart";
+import { DemoWebPart } from "./wp";
 
-// Create the global variable
-var $REST = window["$REST"] || {};
-$REST.WebPart = WebPart;
-window["$REST"] = $REST;
+// Add the global variable
+window["WebPartDemo"] = DemoWebPart;
+
+// Let SharePoint know the script has been loaded
+window["SP"].SOD.notifyScriptLoadedAndExecuteWaitingJobs("wpDemo.js");
