@@ -1,17 +1,20 @@
 {
   "name": "sp-webpart",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A SharePoint 2013 webpart class.",
   "main": "build/sp-webpart.js",
   "scripts": {
-    "build": "tsc",
-    "test": "cd test && npm run build"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gunjandatta/sp-webpart.git"
   },
-  "keywords": [],
+  "keywords": [
+    "SharePoint",
+    "gd-sprest",
+    "WebPart"
+  ],
   "author": "Gunjan Datta <me@dattabase.com> (https://gunjandatta.github.io/sprest)",
   "license": "MIT",
   "bugs": {
