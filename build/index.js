@@ -271,4 +271,4 @@ var WebPart = /** @class */ (function () {
     return WebPart;
 }());
 exports.WebPart = WebPart;
-//# sourceMappingURL=sp-webpart.js.map
+//# sourceMappingURL=index.js.map

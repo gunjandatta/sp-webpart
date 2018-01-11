@@ -1,4 +1,4 @@
-import { WebPart, IWebPart } from "../../build/sp-webpart";
+import { WebPart, IWebPart } from "../build/sp-webpart";
 import { Configuration } from "./cfg";
 
 /**
