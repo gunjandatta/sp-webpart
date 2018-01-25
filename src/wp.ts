@@ -21,13 +21,13 @@ export class DemoWebPart {
     }
 
     // Render the display component
-    private renderDisplay = (wp: Types.Helper.WebPart.IWebPart) => {
+    private renderDisplay = (wp: Types.Helper.IWebPart) => {
         // Set the display content
         wp.el.innerHTML = "<h3>The page is being displayed.</h3>";
     }
 
     // Render the edit component
-    private renderEdit = (wp: Types.Helper.WebPart.IWebPart) => {
+    private renderEdit = (wp: Types.Helper.IWebPart) => {
         // Set the display content
         wp.el.innerHTML = "<h3>The page is being edited.</h3>";
     }
